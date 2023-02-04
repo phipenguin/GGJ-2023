@@ -34,11 +34,6 @@ public class Boss1Script : Entity
         RestoreHP();
     }
 
-    public override void RestoreHP()
-    {
-        base.RestoreHP();
-    }
-
     void Update(){
         //Manual User input for Boss attacks
         /*
