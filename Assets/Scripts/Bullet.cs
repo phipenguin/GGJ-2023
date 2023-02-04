@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision other) {
-        if (other.gameObject.CompareTag(objectHitTag)) {
+        if (!string.IsNullOrEmpty(objectHitTag) && other.gameObject.CompareTag(objectHitTag)) {
             onTagHit.Invoke();
         } else {
             onOtherHit.Invoke();
