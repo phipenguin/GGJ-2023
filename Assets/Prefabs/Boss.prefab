@@ -459,11 +459,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dc15a96c9eebe4cbfe005f2c05926a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 30
+  MaxHealth: 1000
   currHealth: 0
+  cannonReferenceObject: {fileID: 0}
+  cannonRange1: -18
+  cannonRange2: 5
   SlamReferenceLocation: {fileID: 0}
   SlammingTail: {fileID: 0}
+  plantTargetRate: 60
+  lightSlamCD: 2
+  heavySlamCD: 7
+  cannonCD: 5
+  maxProjectiles: 4
   Player: {fileID: 0}
+  Plant: {fileID: 0}
 --- !u!95 &438807386935487033
 Animator:
   serializedVersion: 5
