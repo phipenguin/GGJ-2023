@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
 
     void Start() {
         rb = GetComponent<Rigidbody>();
+        relativeFireDirection.Normalize();
     }
 
     void FixedUpdate() {
