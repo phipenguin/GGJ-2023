@@ -11,7 +11,7 @@ public class Boss2Script : Entity
     // Start is called before the first frame update
     void Start()
     {
-        
+        RestoreHP();
     }
 
     // Update is called once per frame
