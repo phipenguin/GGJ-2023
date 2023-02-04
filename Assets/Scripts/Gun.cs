@@ -36,7 +36,10 @@ public class Gun : MonoBehaviour
     }
 
     public void OnRangeAtk() {
-        Instantiate(bullet, transform.position, transform.rotation);
+        if (canShoot) {
+            Instantiate(bullet, transform.position, transform.rotation);
+            StartCoroutine(shootCooldown());
+        }
     }
 
     public void SetRotation(float angle) {
