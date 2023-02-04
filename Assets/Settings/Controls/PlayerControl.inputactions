@@ -112,7 +112,7 @@
                 {
                     "name": "",
                     "id": "8f4dabe9-29cc-4711-a056-e0d478c463d5",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -123,7 +123,7 @@
                 {
                     "name": "",
                     "id": "963946bc-f0e9-48ec-b597-3b4bafde73e4",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
