@@ -25,10 +25,12 @@ public class Bullet : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision other) {
-        if (!string.IsNullOrEmpty(objectHitTag) && other.gameObject.CompareTag(objectHitTag)) {
-            onTagHit.Invoke();
-        } else {
-            onOtherHit.Invoke();
+        if (mask == (mask | (1 << other.gameObject.layer))) {
+            if (!string.IsNullOrEmpty(objectHitTag) && other.gameObject.CompareTag(objectHitTag)) {
+                onTagHit.Invoke();
+            } else {
+                onOtherHit.Invoke();
+            }
         }
     }
 
