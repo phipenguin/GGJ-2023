@@ -7,15 +7,18 @@ public class Boss1Script : Entity
 {
     [Header("References")]
     [SerializeField] private GameObject cannonReferenceObject;
+    [SerializeField] private float cannonRange1 = -18;
+    [SerializeField] private float cannonRange2 = 5;
 
     [SerializeField] private GameObject SlamReferenceLocation;
     [SerializeField] private GameObject SlammingTail;
 
     [Header("Attack details")]
-    [SerializeField] float lightSlamCD = 2.0f;
-    [SerializeField] float heavySlamCD = 3.0f;
-    [SerializeField] float cannonCD = 5.0f;
-    [SerializeField] int maxProjectiles = 4;
+    [SerializeField] private float plantTargetRate = 60.0f;
+    [SerializeField] private float lightSlamCD = 2.0f;
+    [SerializeField] private float heavySlamCD = 7.0f;
+    [SerializeField] private float cannonCD = 5.0f;
+    [SerializeField] private int maxProjectiles = 4;
 
     private bool isAttacking;
     [SerializeField]GameObject Player;
@@ -32,7 +35,7 @@ public class Boss1Script : Entity
 
     void Update(){
         //Manual User input for Boss attacks
-        
+        /*
         if(Input.GetKeyDown(KeyCode.Alpha1)){
             attack(abilityName.lightSlam);
             //print("Performing Ability 1");
@@ -45,12 +48,24 @@ public class Boss1Script : Entity
             attack(abilityName.cannon);
             print("Performing Ability 3");
         }
+        */
+
+        if(!isAttacking){
+            attack((abilityName)Random.Range(0,3));
+        }
         
     }
 
     void attack(abilityName ability){
         if(!isAttacking){
             isAttacking = true;
+            GameObject target;
+            if(Random.Range(0,100) < plantTargetRate){
+                target = Plant;
+            }
+            else{
+                target = Player;
+            }
             switch(ability){
 
                 // ABILITY 1 // ------------------------------
@@ -96,7 +111,7 @@ public class Boss1Script : Entity
         while( x < cannonCount){
             x++;
             print(x + " thrown");
-            Instantiate(cannonReferenceObject, new Vector3(Random.Range(-18, 5), Random.Range(20.0f,25.0f) , 0.0f), Quaternion.identity);
+            Instantiate(cannonReferenceObject, new Vector3(Random.Range(cannonRange1, cannonRange2), Random.Range(20.0f,25.0f) , 0.0f), Quaternion.identity);
         }
         yield return new WaitForSeconds(delayTimer);
         isAttacking = false;
