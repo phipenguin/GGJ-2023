@@ -6,15 +6,17 @@ enum abilityName{ lightSlam, heavySlam, cannon};
 public class Boss1Script : Entity
 {
     [Header("Slam Attributes")]
-    [SerializeField] private GameObject ReferenceLocation;
+    [SerializeField] private GameObject SlamReferenceLocation;
     [SerializeField] private GameObject SlammingTail;
-    [SerializeField] private int slamRepeatChance = 3;
 
     private bool isAttacking;
     [SerializeField]GameObject Player;
     Animator animator;
+    Animator TailAnimator;
     void Start(){
         animator = GetComponent<Animator>();
+        TailAnimator = SlammingTail.GetComponentInChildren<Animator>(); 
+        if(Player == null)
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -43,31 +45,20 @@ public class Boss1Script : Entity
 
                     animator.SetTrigger("ReadyTailSlam");
                     animator.SetBool("TailSlamming", true);
-                    //SetReferenceLocation(SlamReferenceLocation);
-                    ReferenceLocation.transform.position = new Vector2(Player.transform.position.x, ReferenceLocation.transform.position.y);
-                    //SlammingTail.transform.position = new Vector2(ReferenceLocation.transform.position.x, ReferenceLocation.transform.position.y);
-                    SlammingTail.transform.position = new Vector2(Player.transform.position.x, SlammingTail.transform.position.y);
-                    animator.SetTrigger("TailSlam");
-
-
-                    if(Random.Range (0,10) <= slamRepeatChance){
-                        //SetReferenceLocation(SlamReferenceLocation);
-                        ReferenceLocation.transform.position = new Vector2(Player.transform.position.x, ReferenceLocation.transform.position.y);  
-                        SlammingTail.transform.position = new Vector2(ReferenceLocation.transform.position.x, ReferenceLocation.transform.position.y);
-                        animator.SetTrigger("TailSlam");
-                        print("Another Slam");
-                    }
-                        StartCoroutine(AttackCooldown(3));
-                        animator.SetBool("TailSlamming", false);
+                    SlammingTail.transform.position = new Vector2(Player.transform.position.x, 20.0f);
+                    print(SlammingTail.transform.position);
+                    TailAnimator.SetTrigger("TailSlam");
+                    StartCoroutine(AttackCooldown(3));
+                    animator.SetBool("TailSlamming", false);
 
                     break;
 
                 // ABILITY 2 // ------------------------------
                 case abilityName.heavySlam:
-                    
+                    SlammingTail.transform.position = new Vector2(SlamReferenceLocation.transform.position.x, 20.0f);
                     animator.SetTrigger("ReadyTailSlam");
                     animator.SetBool("TailSlamming", true);
-                    animator.SetTrigger("HeavySlam");
+                    TailAnimator.SetTrigger("HeavySlam");
 
                     StartCoroutine(AttackCooldown(5));
                     animator.SetBool("TailSlamming", false);
