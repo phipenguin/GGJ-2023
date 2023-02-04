@@ -5,12 +5,21 @@ using UnityEngine;
 enum abilityName{ lightSlam, heavySlam, cannon};
 public class Boss1Script : Entity
 {
-    [Header("Slam Attributes")]
+    [Header("References")]
+    [SerializeField] private GameObject cannonReferenceObject;
+
     [SerializeField] private GameObject SlamReferenceLocation;
     [SerializeField] private GameObject SlammingTail;
 
+    [Header("Attack details")]
+    [SerializeField] float lightSlamCD = 2.0f;
+    [SerializeField] float heavySlamCD = 3.0f;
+    [SerializeField] float cannonCD = 5.0f;
+    [SerializeField] int maxProjectiles = 4;
+
     private bool isAttacking;
     [SerializeField]GameObject Player;
+    [SerializeField]GameObject Plant;
     Animator animator;
     Animator TailAnimator;
     void Start(){
@@ -18,9 +27,12 @@ public class Boss1Script : Entity
         TailAnimator = SlammingTail.GetComponentInChildren<Animator>(); 
         if(Player == null)
         Player = GameObject.FindGameObjectWithTag("Player");
+        //Plant = GameObject.FindGameObjectWithTag("Plant");
     }
 
     void Update(){
+        //Manual User input for Boss attacks
+        
         if(Input.GetKeyDown(KeyCode.Alpha1)){
             attack(abilityName.lightSlam);
             //print("Performing Ability 1");
@@ -33,6 +45,7 @@ public class Boss1Script : Entity
             attack(abilityName.cannon);
             print("Performing Ability 3");
         }
+        
     }
 
     void attack(abilityName ability){
@@ -46,11 +59,8 @@ public class Boss1Script : Entity
                     animator.SetTrigger("ReadyTailSlam");
                     animator.SetBool("TailSlamming", true);
                     SlammingTail.transform.position = new Vector2(Player.transform.position.x, 20.0f);
-                    print(SlammingTail.transform.position);
                     TailAnimator.SetTrigger("TailSlam");
-                    StartCoroutine(AttackCooldown(3));
-                    animator.SetBool("TailSlamming", false);
-
+                    StartCoroutine(TailSlamCooldown(lightSlamCD));
                     break;
 
                 // ABILITY 2 // ------------------------------
@@ -59,12 +69,12 @@ public class Boss1Script : Entity
                     animator.SetTrigger("ReadyTailSlam");
                     animator.SetBool("TailSlamming", true);
                     TailAnimator.SetTrigger("HeavySlam");
-
-                    StartCoroutine(AttackCooldown(5));
-                    animator.SetBool("TailSlamming", false);
+                    StartCoroutine(TailSlamCooldown(heavySlamCD));
 
                 break; 
                 case abilityName.cannon:
+                    int cannonCount = Random.Range(1 , maxProjectiles);
+                    StartCoroutine(CannonCooldown(cannonCD, cannonCount));
                 break; 
             }
         }else {
@@ -73,8 +83,21 @@ public class Boss1Script : Entity
         }
     }
 
-    IEnumerator AttackCooldown(float delayTimer){
-        print("Delay initiated for "+ delayTimer);
+    IEnumerator TailSlamCooldown(float delayTimer){
+        //print("Delay initiated for "+ delayTimer);
+        yield return new WaitForSeconds(delayTimer);
+        animator.SetBool("TailSlamming", false);
+        isAttacking = false;
+    }
+
+    IEnumerator CannonCooldown(float delayTimer, int cannonCount){
+        int x = 0;
+        animator.SetTrigger("cannonThrow");
+        while( x < cannonCount){
+            x++;
+            print(x + " thrown");
+            Instantiate(cannonReferenceObject, new Vector3(Random.Range(-18, 5), Random.Range(20.0f,25.0f) , 0.0f), Quaternion.identity);
+        }
         yield return new WaitForSeconds(delayTimer);
         isAttacking = false;
     }
