@@ -8,6 +8,9 @@ public class Bullet : MonoBehaviour
 {
     public Vector3 relativeFireDirection;
     public float speed;
+    
+    public float dmg = 10.0f;
+
     public LayerMask mask;
     public string objectHitTag;
     public UnityEvent onTagHit;
@@ -25,10 +28,18 @@ public class Bullet : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision other) {
-        if (!string.IsNullOrEmpty(objectHitTag) && other.gameObject.CompareTag(objectHitTag)) {
-            onTagHit.Invoke();
-        } else {
-            onOtherHit.Invoke();
+        if (mask == (mask | (1 << other.gameObject.layer))) {
+            if (!string.IsNullOrEmpty(objectHitTag) && other.gameObject.CompareTag(objectHitTag)) {
+                onTagHit.Invoke();
+                print(onTagHit);
+            } else {
+                onOtherHit.Invoke();
+                //print(other.gameObject.name);
+                //other.gameObject.TryGetComponent<Entity>(out Entity entity);
+                other.gameObject.GetComponentInParent<Entity>().DmgTaken(dmg);
+                //entity.DmgTaken(dmg);
+
+            }
         }
     }
 

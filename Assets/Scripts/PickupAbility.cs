@@ -13,21 +13,25 @@ public class PickupAbility : MonoBehaviour
     public UnityEvent onPutdown;
     private GameObject objectHeld;
     private GameObject objectTarget;
+    private bool canPlant = false;
 
     void Awake() {
         Assert.IsFalse(string.IsNullOrEmpty(objectTag));
     }
 
     public void OnPlant() { 
-        if (objectTarget) {
-            objectHeld = objectTarget;
-            objectTarget = null;
-            objectHeld.SetActive(false);
-            onPickup.Invoke();
-        } else if (objectHeld) {
-            objectHeld.transform.position = transform.position + relativePutdownPosition;
-            objectHeld.SetActive(true);
-            objectHeld = null;
+        if (canPlant) {
+            if (objectTarget) {
+                objectHeld = objectTarget;
+                objectTarget = null;
+                objectHeld.SetActive(false);
+                onPickup.Invoke();
+            } else if (objectHeld) {
+                objectHeld.transform.position = transform.position + relativePutdownPosition;
+                objectHeld.SetActive(true);
+                objectHeld = null;
+                onPutdown.Invoke();
+            }
         }
     }
 
@@ -41,5 +45,9 @@ public class PickupAbility : MonoBehaviour
         if (other.gameObject.CompareTag(objectTag)) {
             objectTarget = null;
         }
+    }
+
+    public void setCanPlant(bool value) {
+        canPlant = value;
     }
 }
