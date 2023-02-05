@@ -31,14 +31,8 @@ public class Bullet : MonoBehaviour
         if (mask == (mask | (1 << other.gameObject.layer))) {
             if (!string.IsNullOrEmpty(objectHitTag) && other.gameObject.CompareTag(objectHitTag)) {
                 onTagHit.Invoke();
-                print(onTagHit);
             } else {
                 onOtherHit.Invoke();
-                //print(other.gameObject.name);
-                //other.gameObject.TryGetComponent<Entity>(out Entity entity);
-                other.gameObject.GetComponentInParent<Entity>().DmgTaken(dmg);
-                //entity.DmgTaken(dmg);
-
             }
         }
     }
