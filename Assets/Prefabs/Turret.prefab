@@ -240,4 +240,5 @@ MonoBehaviour:
   MaxHealth: 30
   currHealth: 0
   isAlive: 0
+  GunBarrel: {fileID: 6875405224847411613}
   delayPerShot: 2

@@ -27,7 +27,7 @@ public class Boss1Script : Entity
     Animator TailAnimator;
     void Start(){
         animator = GetComponent<Animator>();
-        //TailAnimator = SlammingTail.GetComponentInChildren<Animator>(); 
+        TailAnimator = SlammingTail.GetComponentInChildren<Animator>(); 
         if(Player == null)
         Player = GameObject.FindGameObjectWithTag("Player");
         //Plant = GameObject.FindGameObjectWithTag("Plant");

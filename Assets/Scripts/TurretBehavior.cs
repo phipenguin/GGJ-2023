@@ -7,6 +7,7 @@ public class TurretBehavior : Entity
 
     GameObject Player;
     public bool isAlive  = false;
+    [SerializeField] private GameObject GunBarrel;
 
     [SerializeField] private float delayPerShot = 2.0f;
     private bool isAttacking = false;
@@ -37,5 +38,12 @@ public class TurretBehavior : Entity
     {
         base.RestoreHP();
         isAlive = true;
+        GunBarrel.SetActive(true);
+    }
+
+    public override void Die()
+    {
+        //base.Die();
+        GunBarrel.SetActive(false);
     }
 }

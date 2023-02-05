@@ -49,7 +49,7 @@ public class Boss2Script : Entity
             }
         }
         ///Not Working move script
-        Vector3.MoveTowards(this.gameObject.transform.position, target.transform.position, speed);
+        this.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, target.transform.position, speed * Time.deltaTime);
 
         ///Happens if target is turret and to be repaired, will stay for a while.
         if(target.GetComponent<TurretBehavior>() && Vector3.Distance(target.transform.position, this.transform.position) < 1.0f){
