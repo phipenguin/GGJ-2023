@@ -96,6 +96,7 @@ MonoBehaviour:
   onShoot:
     m_PersistentCalls:
       m_Calls: []
+  pickedPlant: {fileID: 0}
 --- !u!114 &1438722830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +218,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  canPlant: 0
 --- !u!54 &1716607432
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -385,6 +387,26 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 414104, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.24174824
+      objectReference: {fileID: 0}
+    - target: {fileID: 414104, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.24174824
+      objectReference: {fileID: 0}
+    - target: {fileID: 414104, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.40291375
+      objectReference: {fileID: 0}
+    - target: {fileID: 414104, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.021
+      objectReference: {fileID: 0}
+    - target: {fileID: 414104, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.082
+      objectReference: {fileID: 0}
     - target: {fileID: 414622, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -441,6 +463,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9531344, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 11422674, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -448,6 +474,10 @@ PrefabInstance:
     - target: {fileID: 11436916, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}
       propertyPath: m_LayerMask.m_Bits
       value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 11457034, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11459114, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}
       propertyPath: m_AbilitySlots.Array.size
@@ -528,6 +558,14 @@ PrefabInstance:
     - target: {fileID: 19983716, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21245342, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 727d3db57fe94ba4c8c5296c2070010d, type: 3}
+    - target: {fileID: 21245342, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 006d181c7f39aa7469a46c0b4f98d4d7, type: 3}

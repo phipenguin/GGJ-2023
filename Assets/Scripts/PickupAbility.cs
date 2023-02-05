@@ -13,7 +13,7 @@ public class PickupAbility : MonoBehaviour
     public UnityEvent onPutdown;
     private GameObject objectHeld;
     private GameObject objectTarget;
-    private bool canPlant = false;
+    public bool canPlant = false;
 
     void Awake() {
         Assert.IsFalse(string.IsNullOrEmpty(objectTag));

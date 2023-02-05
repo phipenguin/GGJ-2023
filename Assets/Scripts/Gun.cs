@@ -14,9 +14,14 @@ public class Gun : MonoBehaviour
     public UnityEvent onAimRight;
     public UnityEvent onShoot;
 
+    public PickupAbility pickedPlant;
     private Vector2 aimDirection = Vector2.right;
     private bool canShoot = true;
 
+
+    void Start(){
+        pickedPlant = GameObject.FindObjectOfType<PickupAbility>();
+    }
     public void OnMove(InputValue value) {
         aimDirection = value.Get<Vector2>();
 
@@ -36,7 +41,7 @@ public class Gun : MonoBehaviour
     }
 
     public void OnRangeAtk() {
-        if (canShoot) {
+        if (canShoot && pickedPlant.canPlant) {
             Instantiate(bullet, transform.position, transform.rotation);
             StartCoroutine(shootCooldown());
         }
