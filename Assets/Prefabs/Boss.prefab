@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 438807385830913887}
   - component: {fileID: 438807385830913880}
   m_Layer: 0
-  m_Name: Pointy Part
+  m_Name: TailBody3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 438807386533602723}
   - component: {fileID: 438807386533602732}
   m_Layer: 0
-  m_Name: TailBody
+  m_Name: TailBody2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,12 +459,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dc15a96c9eebe4cbfe005f2c05926a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 30
+  MaxHealth: 1000
   currHealth: 0
-  ReferenceLocation: {fileID: 0}
+  cannonReferenceObject: {fileID: 0}
+  cannonRange1: -18
+  cannonRange2: 5
+  SlamReferenceLocation: {fileID: 0}
   SlammingTail: {fileID: 0}
-  slamRepeatChance: 3
+  plantTargetRate: 60
+  lightSlamCD: 2
+  heavySlamCD: 7
+  cannonCD: 5
+  maxProjectiles: 4
   Player: {fileID: 0}
+  Plant: {fileID: 0}
 --- !u!95 &438807386935487033
 Animator:
   serializedVersion: 5
