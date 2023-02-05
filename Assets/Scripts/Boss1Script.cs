@@ -30,7 +30,7 @@ public class Boss1Script : Entity
         TailAnimator = SlammingTail.GetComponentInChildren<Animator>(); 
         if(Player == null)
         Player = GameObject.FindGameObjectWithTag("Player");
-        //Plant = GameObject.FindGameObjectWithTag("Plant");
+        Plant = GameObject.FindGameObjectWithTag("Plant");
         RestoreHP();
     }
 

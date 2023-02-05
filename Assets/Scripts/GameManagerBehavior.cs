@@ -24,7 +24,7 @@ public class GameManagerBehavior : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag("Plant");
         trigger.OnDetected.AddListener(SwitchToFirstBoss);
     }
 

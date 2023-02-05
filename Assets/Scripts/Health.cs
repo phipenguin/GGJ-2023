@@ -39,4 +39,8 @@ public class Health : MonoBehaviour
             }
         }
     }
+
+    public void plantDamaged(){
+        playerHealth--;
+    }
 }
