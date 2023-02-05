@@ -112,7 +112,9 @@ public class Boss1Script : Entity
         while( x < cannonCount){
             x++;
             //print(x + " thrown");
-            Instantiate(cannonReferenceObject, new Vector3(Random.Range(cannonRange1, cannonRange2), Random.Range(20.0f,25.0f) , 0.0f), Quaternion.identity);
+            
+            GameObject cannon = Instantiate(cannonReferenceObject, new Vector3(Random.Range(cannonRange1, cannonRange2), Random.Range(20.0f,25.0f) , 0.0f), Quaternion.identity);
+            cannon.SetActive(true);
         }
         yield return new WaitForSeconds(delayTimer);
         isAttacking = false;

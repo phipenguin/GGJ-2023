@@ -34,4 +34,7 @@ public class Cannon : MonoBehaviour
         }
     }
     
+    public void DestroySelf(){
+        Destroy(this);
+    }
 }
